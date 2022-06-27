@@ -29,7 +29,7 @@ function Login() {
         });
         if (res.status === 200) {
           setTimeout(() => {
-            navigate("/films");
+            navigate("/allBooks");
           }, 1000);
         }
       })
@@ -99,6 +99,7 @@ function Login() {
           </button>
         </div>
       </form>
+      
     </>
   );
 }

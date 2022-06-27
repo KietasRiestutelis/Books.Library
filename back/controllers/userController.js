@@ -47,7 +47,7 @@ exports.createUser = async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      films: req.body.films,
+      books: req.body.films,
     });
 
     const token = jwt.sign({ id: result._id }, "labas", {
@@ -117,16 +117,16 @@ exports.loginUser = async (req, res, next) => {
   });
 };
 
-exports.getAllUserFilms = async (req, res) => {
+exports.getAllUserBooks = async (req, res) => {
   try {
     const users = await Users.find({ _id: req.params.id });
-    const { films } = users[0];
+    const { books } = users[0];
 
     res.status(200).json({
       status: "success",
       results: users.length,
       data: {
-        films: films,
+        books: books,
       },
     });
   } catch (err) {
@@ -137,11 +137,11 @@ exports.getAllUserFilms = async (req, res) => {
   }
 };
 
-exports.createUserFilms = async (req, res) => {
+exports.createUserBook = async (req, res) => {
   try {
     const updatedFilms = await Users.findOneAndUpdate(
       { _id: req.params.id },
-      { $push: { films: req.body } },
+      { $push: { books: req.body } },
       {
         new: true,
       }
@@ -160,18 +160,19 @@ exports.createUserFilms = async (req, res) => {
   }
 };
 
-exports.findFilmAndUpdate = async (req, res) => {
+exports.findBookAndUpdate = async (req, res) => {
   console.log(req.params.id);
   console.log(req.params.subID);
   console.log(req.body);
   try {
-    const updateFilm = await Users.findOneAndUpdate(
+    const updateBook = await Users.findOneAndUpdate(
       { _id: req.params.id, "films._id": req.params.subID },
       {
         $set: {
-          "films.$.name": req.body.name,
-          "films.$.category": req.body.category,
-          "films.$.date": req.body.date,
+          "books.$.name": req.body.name,
+          "books.$.category": req.body.category,
+          "books.$.author": req.body.date,
+          "books.$.date": req.body.date,
         },
       }
     );
@@ -179,7 +180,7 @@ exports.findFilmAndUpdate = async (req, res) => {
     res.status(200).json({
       status: "success",
       data: {
-        films: updateFilm,
+        books: updateBook,
       },
     });
   } catch (err) {
@@ -190,13 +191,13 @@ exports.findFilmAndUpdate = async (req, res) => {
   }
 };
 
-exports.findFilmAndDelete = async (req, res) => {
+exports.findBookAndDelete = async (req, res) => {
   try {
     await Users.findOneAndUpdate(
       { _id: req.params.id },
       {
         $pull: {
-          films: { _id: req.params.subID },
+          books: { _id: req.params.subID },
         },
       }
     );

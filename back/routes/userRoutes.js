@@ -4,10 +4,10 @@ const express = require("express");
 const {
   getAllUsers,
   getUserById,
-  getAllUserFilms,
-  createUserFilms,
-  findFilmAndUpdate,
-  findFilmAndDelete,
+  getAllUserBooks,
+  createUserBook,
+  findBookAndUpdate,
+  findBookAndDelete,
   createUser,
   getEmail,
   loginUser,
@@ -22,8 +22,8 @@ router.route("/email").get(getEmail);
 router.route("/login").post(loginUser);
 router.route("/:id").get(getUserById);
 
-router.route("/:id/films/upd/:subID").patch(findFilmAndUpdate);
-router.route("/:id/films/dlt/:subID").patch(findFilmAndDelete);
-router.route("/:id/films").get(getAllUserFilms).post(createUserFilms);
+router.route("/:id/books/upd/:subID").patch(findBookAndUpdate);
+router.route("/:id/books/dlt/:subID").patch(findBookAndDelete);
+router.route("/:id/books").get(getAllUserBooks).post(createUserBook);
 
 module.exports = router;

@@ -32,17 +32,17 @@ export async function loginUser(data) {
 
 //FILMS
 
-export async function getAllUserFilms(id) {
-  const res = await axiosUser.get(`/${id}/films`);
+export async function getAllUserBooks(id) {
+  const res = await axiosUser.get(`/${id}/books`);
   return res;
 }
 
-export async function createUserFilms(id, data) {
+export async function createUserBook(id, data) {
   const response = await axiosUser
-    .post(`/${id}/films/`, JSON.stringify(data))
+    .post(`/${id}/books/`, JSON.stringify(data))
     .then((result) => {
       swal({
-        text: "Filmas įrašytas!",
+        text: "Knyga pridėta!",
         button: "Puiku",
         icon: "success",
         timer: 2000,
@@ -60,9 +60,9 @@ export async function createUserFilms(id, data) {
   return response;
 }
 
-export async function findFilmAndUpdate(data, id, subID) {
+export async function findBookAndUpdate(data, id, subID) {
   const response = await axiosUser
-    .patch(`/${id}/films/upd/${subID}`, JSON.stringify(data))
+    .patch(`/${id}/books/upd/${subID}`, JSON.stringify(data))
     .then((result) => {
       swal({
         text: "Atnaujinta!",
@@ -83,9 +83,9 @@ export async function findFilmAndUpdate(data, id, subID) {
   return response;
 }
 
-export async function findFilmAndDelete(id, subID) {
+export async function findBookAndDelete(id, subID) {
   const response = await axiosUser
-    .patch(`/${id}/films/dlt/${subID}`)
+    .patch(`/${id}/books/dlt/${subID}`)
     .then((result) => {
       swal({
         text: "Ištrinta!",

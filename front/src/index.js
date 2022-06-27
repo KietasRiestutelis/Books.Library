@@ -6,12 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import Films from "./components/films/Films";
 import Home from "./components/home/Home";
-import FilmsForm from "./components/films/FilmsForm";
 import { UserProvider } from "./components/context/UserContext";
 import Login from "./components/home/Login";
 import Registration from "./components/home/Registration";
+import UserBooks from "./components/books/UserBooks";
+import Books from "./components/books/Books";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -23,8 +23,8 @@ root.render(
           <Route element={<App />}>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/films" element={<Films />} />
-            <Route path="/addfilm" element={<FilmsForm />} />
+            <Route path="/userBooks" element={<UserBooks />} />
+            <Route path="/allBooks" element={<Books/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Registration />} />
           </Route>

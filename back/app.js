@@ -3,6 +3,7 @@ const { get } = require("http");
 const cors = require("cors");
 
 const userRoutes = require("./routes/userRoutes");
+const bookListRoutes = require("./routes/bookListRoutes");
 
 
 const app = express();
@@ -22,5 +23,6 @@ app.options("/:id/:subID", cors());
 app.use(express.json());
 
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/users", bookListRoutes);
 
 module.exports = app;

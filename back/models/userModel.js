@@ -3,10 +3,11 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 
-const FilmsSchema = mongoose.Schema(
+const booksSchema = mongoose.Schema(
   {
     name: { type: String, trim: true, maxLength: 50, required: true },
     category: { type: String },
+    author: { type: String },
     date: { type: Date },
   },
   { timestamps: true }
@@ -29,6 +30,14 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       // validate: [validator.isEmail, "Įveskite e-mail"],
     },
+     address: {
+      type: String,
+      required: [true, "Adress is required"],
+    },
+      city: {
+      type: String,
+      required: [true, "City is required"],
+    },
     password: {
       type: String,
       required: true,
@@ -47,7 +56,7 @@ const userSchema = new mongoose.Schema(
     //   },
     // },
 
-    films: [FilmsSchema],
+    books: [booksSchema],
   },
   { timestamps: true }
 );
@@ -74,14 +83,12 @@ const testUsers = new Users({
   name: "Jonas",
   email: "jonas@gmail.com",
   password: "Jonas123456",
-  films: [
-    { name: "The Truman Show", category: "mindfuck", date: "2022-05-23" },
-    {
-      name: "Eternal Sunshine of the Spotless Mind",
-      category: "mindfuck",
-      date: "2022-05-23",
-    },
-    { name: "Mr. Nobody", category: "mindfuck", date: "2022-05-23" },
+  address: "Basanaviciaus g. 12",
+  city: "Vilnius",
+  books: [
+    { name: "Pirma knyga", category: "Moksline literatūra",author: "Belekas", date: "2022-05-23" },
+    { name: "Antra knyga", category: "Veiksmo",author: "Belekas", date: "2022-05-23" },
+   
   ],
 });
 

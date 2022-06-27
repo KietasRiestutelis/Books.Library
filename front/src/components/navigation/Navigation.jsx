@@ -47,13 +47,13 @@ function Navigation() {
             >
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className={`${isDisabled()}`}>
-                  <Link to="/films">
-                    <button className="nav-button">Mano filmai</button>
+                  <Link to="/allBooks">
+                    <button className="nav-button">Knygos</button>
                   </Link>
                 </li>
                 <li className={`${isDisabled()}`}>
-                  <Link to="/addfilm">
-                    <button className="nav-button">Pridėti filmą</button>
+                  <Link to="/userBooks">
+                    <button className="nav-button">Mano knygos</button>
                   </Link>
                 </li>
                 <li className={`${isDisabled()} logout`}>
@@ -76,16 +76,6 @@ function Navigation() {
                   </button>
                 </li>
               </ul>
-              <div className="buttons">
-                <div className={`${disabled()}`}> 
-                <Link to="/login">
-                <button className="nav-button">Prisijungti</button>
-                </Link>
-                <Link to="/registration">
-                <button className="nav-button">Užsiregistruoti</button>
-                </Link>
-              </div>
-              </div>
             </div>
           </div>
         </nav>
