@@ -23,7 +23,7 @@ application will open on your browser at
 http://localhost:3000
 
 # Technologies
-In project we use
+In project is used
 
 frontend:
 
